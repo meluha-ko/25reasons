@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;500;600&family=Playfair+Display:wght@400;600&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Manrope', 'Trebuchet MS', sans-serif;
+  background: radial-gradient(circle at top, #fff7ee 0%, #fbe3e7 40%, #f3c5a6 100%);
+  color: #140c10;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2 {
+  font-family: 'Playfair Display', 'Times New Roman', serif;
+}
+
+#root {
+  min-height: 100vh;
+}
