@@ -8,10 +8,11 @@ type Reason = {
 };
 
 const reasonTitles = [
-  'How can someone look this cute in an ID picture',
   'How you turn little moments into magic',
+  'Pottu vacha you look like a goddess',
   'You call me chellakutty',
   'How hopeful you are',
+  'How can someone look this cute in an ID picture',
   'The way you love me.',
   'Na veetla solla poren hit me hard',
   'I didnt know I would love talking to someone this much',
@@ -20,15 +21,15 @@ const reasonTitles = [
   'Your hugs that feel like shelter',
   'Who is going to look at me the way you do',
   'We fight. We reapir. We stay.',
-  'You find joy in simple things.',
-  'Pottu vacha you look like a goddess'
+  'You find joy in simple things.'
 ];
 
 const reasonTexts = [
-  'If I was sight adichifying your ID card picture ivlo, think of how much I love looking at you!',
   'You make the smallest moments feel special and unforgettable.',
+  'I am mesmerized everytime I look at you wearing pottu.',
   'When you call me chellakutty, I melt every time.',
   'Your hope keeps us looking forward with full hearts.',
+  'If I was sight adichifying your ID card picture ivlo, think of how much I love looking at you!',
   'What did I do to desrve this love, babygirl?',
   'Hearing you say "Na veetla solla poren" hit me in the best way.',
   'I never knew I could love talking to someone this much until you.',
@@ -37,8 +38,7 @@ const reasonTexts = [
   'I didn\'t know two people could get this close in this short time!',
   'No one looks at me the way you do, and it means everything.',
   'All these made me so confident that we can get through anything together.',
-  'You find joy in the simplest things, and it makes life brighter.',
-  'I am mesmerized everytime I look at you wearing pottu.'
+  'You find joy in the simplest things, and it makes life brighter.'
 ];
 
 const loadReasonImage = (index: number) => {
