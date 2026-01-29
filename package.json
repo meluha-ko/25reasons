@@ -20,7 +20,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "JEST_DISABLE_WATCHMAN=1 jest --config jest.config.js",
+    "test:cra": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
