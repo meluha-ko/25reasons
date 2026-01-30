@@ -68,6 +68,67 @@
   margin-bottom: clamp(20px, 3vw, 32px);
 }
 
+.gate {
+  max-width: 640px;
+}
+
+.gate__form {
+  display: grid;
+  gap: 16px;
+}
+
+.gate__label {
+  font-size: 1.1rem;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.gate__input {
+  border-radius: 16px;
+  border: 1px solid rgba(62, 44, 54, 0.2);
+  padding: 14px 16px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--ink);
+  outline: none;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gate__input:focus {
+  border-color: rgba(243, 181, 107, 0.8);
+  box-shadow: 0 0 0 4px rgba(243, 181, 107, 0.2);
+}
+
+.gate__hint {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(62, 44, 54, 0.7);
+}
+
+.gate__error {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #b01d3f;
+}
+
+.gate__button {
+  border: none;
+  padding: 14px 20px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f6b88b, #f08aa0);
+  color: #1a0b12;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gate__button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(64, 24, 36, 0.2);
+}
+
 .eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.3em;

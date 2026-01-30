@@ -7,6 +7,9 @@ type Reason = {
   image: string;
 };
 
+const accessQuestion = 'Na unnoda ___________ sharu?';
+const accessAnswer = 'chellakutty';
+
 const reasonTitles = [
   'The way you love me.',
   'How you turn little moments into magic',
@@ -67,6 +70,15 @@ const reasons: Reason[] = reasonTitles.map((title, index) => {
 });
 
 function App() {
+  const [isUnlocked, setIsUnlocked] = React.useState(() => {
+    if (typeof window === 'undefined') {
+      return false;
+    }
+
+    return window.localStorage.getItem('isUnlocked') === 'true';
+  });
+  const [answerInput, setAnswerInput] = React.useState('');
+  const [errorMessage, setErrorMessage] = React.useState('');
   const [reasonIndex] = React.useState(() => {
     if (typeof window === 'undefined') {
       return 0;
@@ -87,6 +99,22 @@ function App() {
     window.localStorage.setItem('reasonIndex', String(reasonIndex));
   }, [reasonIndex]);
 
+  const handleUnlock = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const normalized = answerInput.trim().toLowerCase();
+
+    if (normalized === accessAnswer) {
+      setIsUnlocked(true);
+      setErrorMessage('');
+      if (typeof window !== 'undefined') {
+        window.localStorage.setItem('isUnlocked', 'true');
+      }
+      return;
+    }
+
+    setErrorMessage('Try again, love.');
+  };
+
   const reason = reasons[reasonIndex];
 
   return (
@@ -95,47 +123,86 @@ function App() {
       <div className="glow glow--two" />
       <div className="glow glow--three" />
 
-      <main className="card">
-        <header className="card__header">
-          <p className="eyebrow">Happyyyy 25th!</p>
-          <h1>Reasons I love you, Sharu!</h1>
-          <p className="subtitle">
-            Open this page anytime you want a reminder of just how adored you are.
-          </p>
-        </header>
+      {!isUnlocked ? (
+        <main className="card gate">
+          <header className="card__header">
+            <p className="eyebrow">Just for you</p>
+            <h1>Answer to unlock</h1>
+            <p className="subtitle">
+              A tiny secret question before the reasons appear.
+            </p>
+          </header>
 
-        <section className="reason">
-          <div className="reason__media">
-            {reason.image ? (
-              <img
-                src={reason.image}
-                alt={reason.title}
-                className="reason__image"
-              />
-            ) : (
-              <div className="photo-placeholder">
-                <span>Photo placeholder</span>
-              </div>
-            )}
-          </div>
-          <div className="reason__content">
-            <h2 className="reason__title">{reason.title}</h2>
-            <p className="reason__text">{reason.text}</p>
-            {/* <div className="editor-hint">
-              Forever your Chellakutty!
-            </div> */}
-          </div>
-        </section>
+          <form className="gate__form" onSubmit={handleUnlock}>
+            <label className="gate__label" htmlFor="secret-answer">
+              {accessQuestion}
+            </label>
+            <input
+              id="secret-answer"
+              className="gate__input"
+              type="password"
+              autoComplete="off"
+              value={answerInput}
+              onChange={(event) => {
+                setAnswerInput(event.target.value);
+                if (errorMessage) {
+                  setErrorMessage('');
+                }
+              }}
+              placeholder="Your answer"
+              aria-invalid={Boolean(errorMessage)}
+            />
+            {errorMessage ? (
+              <p className="gate__error">{errorMessage}</p>
+            ) : null}
+            <button className="gate__button" type="submit">
+              Unlock
+            </button>
+          </form>
+        </main>
+      ) : (
+        <main className="card">
+          <header className="card__header">
+            <p className="eyebrow">Happyyyy 25th!</p>
+            <h1>Reasons I love you, Sharu!</h1>
+            <p className="subtitle">
+              Open this page anytime you want a reminder of just how adored you are.
+            </p>
+          </header>
 
-        <footer className="card__footer">
-          <p>Refresh to shuffle another reason.</p>
-          <div className="footer__dots">
-            <span />
-            <span />
-            <span />
-          </div>
-        </footer>
-      </main>
+          <section className="reason">
+            <div className="reason__media">
+              {reason.image ? (
+                <img
+                  src={reason.image}
+                  alt={reason.title}
+                  className="reason__image"
+                />
+              ) : (
+                <div className="photo-placeholder">
+                  <span>Photo placeholder</span>
+                </div>
+              )}
+            </div>
+            <div className="reason__content">
+              <h2 className="reason__title">{reason.title}</h2>
+              <p className="reason__text">{reason.text}</p>
+              {/* <div className="editor-hint">
+                Forever your Chellakutty!
+              </div> */}
+            </div>
+          </section>
+
+          <footer className="card__footer">
+            <p>Refresh to see the next reason.</p>
+            <div className="footer__dots">
+              <span />
+              <span />
+              <span />
+            </div>
+          </footer>
+        </main>
+      )}
     </div>
   );
 }
