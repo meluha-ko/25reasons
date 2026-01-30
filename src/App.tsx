@@ -194,7 +194,7 @@ function App() {
           </section>
 
           <footer className="card__footer">
-            <p>Open this website to see how much you are adored!</p>
+            <p>Open this page anytime you want a reminder of just how adored you are.</p>
             <div className="footer__dots">
               <span />
               <span />
