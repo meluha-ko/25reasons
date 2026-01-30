@@ -164,9 +164,9 @@ function App() {
         <main className="card">
           <header className="card__header">
             <p className="eyebrow">Happyyyy 25th!</p>
-            <h1>Reasons I love you, Sharu!</h1>
+            <h1>Reasons to love you, Sharu!</h1>
             <p className="subtitle">
-              Open this page anytime you want a reminder of just how adored you are.
+              There are infintie reasons to love you but here are some.
             </p>
           </header>
 
@@ -194,7 +194,7 @@ function App() {
           </section>
 
           <footer className="card__footer">
-            <p>Refresh to see the next reason.</p>
+            <p>Open this website to see how much you are adored!</p>
             <div className="footer__dots">
               <span />
               <span />
